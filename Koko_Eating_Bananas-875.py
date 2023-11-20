@@ -1,5 +1,5 @@
 class Solution:
-    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+    def minEatingSpeed(self, piles, h) -> int:
         def can_eat(mid):
             actual_h = 0
             for pile in piles:
@@ -15,4 +15,6 @@ class Solution:
             else:
               left = mid
         return right
+      
+
         

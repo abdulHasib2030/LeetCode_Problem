@@ -1,14 +1,15 @@
 class Solution:
-    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-
-        lst = nums1+nums2
-        lst.sort()
-
-        if len(lst) % 2 != 0:
-            prin = (lst[len(lst) // 2])
-            return (prin/1)
-        else:
-            div = len(lst) // 2
-            cnt = lst[div] + lst[div-1]
-            return (cnt / 2)
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        cur = dummy = ListNode()
+        while list1 and list2:               
+            if list1.val < list2.val:
+                cur.next = list1
+                list1, cur = list1.next, list1
+            else:
+                cur.next = list2
+                list2, cur = list2.next, list2
                 
+        if list1 or list2:
+            cur.next = list1 if list1 else list2
+            
+        return dummy.next

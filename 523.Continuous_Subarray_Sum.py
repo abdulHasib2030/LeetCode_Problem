@@ -1,19 +1,12 @@
-nums = [23,2,6,4,7]
-k = 13
-n = len(nums)
-flag = True
-temp = nums[0]
-for i in range(1,n):
-  temp += nums[i]
-  if k == temp:
-    flag = False
-    break
-  temp -= nums[i-1]
-if flag == False:
-  print(True)
-elif sum(nums) % k == 0:
-  print(True)
-else:
-  print(False)
-
-
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        n = len(nums)
+        dic ={0:0}
+        s = 0
+        for i in range(n):
+            s += nums[i]
+            if s % k not in dic:
+                dic[s%k] = i+1
+            elif dic[s%k] < i:
+                return True
+        return False
